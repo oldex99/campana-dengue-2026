@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CCSS Área de Salud Cañas — Campaña de prevención del dengue 2026. Lavar, Tapar, Voltear." />
+    <meta property="og:title" content="Día Mundial del Dengue 2026 — Cañas" />
+    <meta property="og:description" content="El país no baja las manos. Vos tampoco. Conocé cómo proteger a tu familia." />
+    <title>Campaña Dengue 2026 — Área de Salud Cañas</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="section hero">
+      <div class="hero__inner">
+        <div class="hero__badge">Día Mundial del Dengue 2026</div>
+        <h1 class="hero__title">El país no baja las manos.<br><span class="hero__accent">Vos tampoco.</span></h1>
+        <p class="hero__subtitle">CCSS · Área de Salud Cañas</p>
+        <div class="hero__video-wrapper" id="video-placeholder">
+          <div class="hero__video-thumb" id="play-btn" role="button" tabindex="0" aria-label="Reproducir video">
+            <div class="play-icon">▶</div>
+            <p class="play-label">Ver el video de la campaña</p>
+          </div>
+          <iframe id="yt-iframe" class="hero__iframe hidden"
+            src=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Video Campaña Dengue 2026">
+          </iframe>
+        </div>
+        <a href="#ciclo" class="hero__scroll-cta">Conocé más ↓</a>
+      </div>
+    </section>
+
+    <!-- ===== CICLO DE VIDA ===== -->
+    <section id="ciclo" class="section ciclo">
+      <div class="container">
+        <h2 class="section-title reveal">El enemigo en tu casa</h2>
+        <p class="section-subtitle reveal">El <em>Aedes aegypti</em> se reproduce en recipientes con agua estancada cerca de vos.</p>
+        <div class="ciclo__stages reveal">
+          <div class="ciclo__stage">
+            <div class="ciclo__icon">🥚</div>
+            <h3>Huevo</h3>
+            <p>Se pega en las paredes de recipientes con agua</p>
+          </div>
+          <div class="ciclo__arrow">→</div>
+          <div class="ciclo__stage">
+            <div class="ciclo__icon">🐛</div>
+            <h3>Larva</h3>
+            <p>Vive en el agua 5–7 días</p>
+          </div>
+          <div class="ciclo__arrow">→</div>
+          <div class="ciclo__stage">
+            <div class="ciclo__icon">🦟</div>
+            <h3>Pupa</h3>
+            <p>Se transforma en 2 días</p>
+          </div>
+          <div class="ciclo__arrow">→</div>
+          <div class="ciclo__stage">
+            <div class="ciclo__icon">⚠️</div>
+            <h3>Adulto</h3>
+            <p>Listo para picar y transmitir dengue</p>
+          </div>
+        </div>
+        <div class="ciclo__dato reveal">
+          <strong>En solo 10 días:</strong> de 1 huevo a 500 mosquitos adultos
+          <span class="fuente">— OPS, 2023</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GRÁFICO ===== -->
+    <section id="datos" class="section datos">
+      <div class="container">
+        <h2 class="section-title reveal">Costa Rica frente al dengue</h2>
+        <p class="section-subtitle reveal">Casos confirmados por año — la presión sobre el sistema de salud es real.</p>
+        <div class="chart-wrapper reveal">
+          <canvas id="grafico-casos" aria-label="Gráfico de casos de dengue en Costa Rica 2020-2024"></canvas>
+        </div>
+        <p class="fuente-chart reveal">Fuente: Ministerio de Salud / OPS-PLISA · Datos en verificación</p>
+        <div class="datos__highlight reveal">
+          <span class="highlight-num">31,000+</span>
+          <span class="highlight-label">casos en 2024 — presión máxima sobre la CCSS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHECKLIST ===== -->
+    <section id="accion" class="section accion">
+      <div class="container">
+        <h2 class="section-title reveal">Tres acciones que salvan vidas</h2>
+        <p class="section-subtitle reveal">Hacelas cada semana. Sin excepción.</p>
+        <div class="checklist">
+          <label class="check-item reveal" data-key="lavar">
+            <input type="checkbox" id="check-lavar" />
+            <div class="check-content">
+              <span class="check-icon">🚿</span>
+              <div>
+                <strong>LAVAR</strong>
+                <p>Restregá tanques, pilas y recipientes con agua</p>
+              </div>
+            </div>
+            <span class="check-mark">✓</span>
+          </label>
+          <label class="check-item reveal" data-key="tapar">
+            <input type="checkbox" id="check-tapar" />
+            <div class="check-content">
+              <span class="check-icon">🔒</span>
+              <div>
+                <strong>TAPAR</strong>
+                <p>Cubrí todos los recipientes donde guardás agua</p>
+              </div>
+            </div>
+            <span class="check-mark">✓</span>
+          </label>
+          <label class="check-item reveal" data-key="voltear">
+            <input type="checkbox" id="check-voltear" />
+            <div class="check-content">
+              <span class="check-icon">🔄</span>
+              <div>
+                <strong>VOLTEAR</strong>
+                <p>Bota o volteá objetos que acumulen agua: llantas, macetas, cubetas</p>
+              </div>
+            </div>
+            <span class="check-mark">✓</span>
+          </label>
+        </div>
+        <div class="checklist__status" id="checklist-status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__logos">
+          <div class="footer__org">
+            <span class="footer__logo-text">CCSS</span>
+            <span class="footer__org-name">Área de Salud Cañas</span>
+          </div>
+        </div>
+        <p class="footer__copy">Campaña Día Mundial del Dengue 2026</p>
+        <p class="footer__fuentes">Fuentes: OMS · OPS · CCSS · Ministerio de Salud Costa Rica</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
