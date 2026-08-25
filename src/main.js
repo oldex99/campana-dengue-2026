@@ -36,6 +36,17 @@ mm.add('(min-width: 768px)', () => {
   })
 })
 
+// ===== KICKERS =====
+document.querySelectorAll('.kicker').forEach(k => {
+  gsap.from(k, {
+    y: 16,
+    opacity: 0,
+    duration: 0.6,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: k, start: 'top 88%', toggleActions: 'play none none none' }
+  })
+})
+
 // ===== SECTION REVEAL UTILITY =====
 function revealSection(trigger, targets, stagger = 0.12) {
   gsap.from(targets, {
@@ -123,19 +134,11 @@ revealSection('#sintomas', '#sintomas .section-subtitle')
 gsap.from('.fase', { y: 40, opacity: 0, duration: 0.65, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.fases', start: 'top 85%' } })
 gsap.from('.alarma', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.alarma', start: 'top 85%' } })
 
-revealSection('#consultar', '#consultar .section-title')
-revealSection('#consultar', '#consultar .section-subtitle')
-gsap.from('.consultar__card', { y: 40, opacity: 0, duration: 0.65, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.consultar__grid', start: 'top 85%' } })
-
-// Dengue grave section
-revealSection('#dengue-grave', '#dengue-grave .section-title')
-revealSection('#dengue-grave', '#dengue-grave .section-subtitle')
-gsap.from('.grave-step', { x: -30, opacity: 0, duration: 0.6, stagger: 0.2, ease: 'power3.out', scrollTrigger: { trigger: '.grave-path', start: 'top 85%' } })
-
 revealSection('#sistema', '#sistema .section-title')
 revealSection('#sistema', '#sistema .section-subtitle')
+gsap.from('.sistema-argumento', { y: 36, opacity: 0, duration: 0.75, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-argumento', start: 'top 85%' } })
 gsap.from('.impacto-card', { y: 40, opacity: 0, duration: 0.65, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.impacto-grid', start: 'top 85%' } })
-gsap.from('.cita-institucional', { opacity: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '.cita-institucional', start: 'top 88%' } })
+gsap.from('.sistema-conclusion', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-conclusion', start: 'top 88%' } })
 
 // ===== CHECKLIST SECTION =====
 revealSection('#accion', '#accion .section-title')
