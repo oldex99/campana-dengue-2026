@@ -5,3 +5,9 @@ dist
 .DS_Store
 
 .vercel
+
+# Originales en alta de las imagenes generadas: se quedan en la maquina
+# para el material impreso. Al sitio solo suben los .webp optimizados.
+public/img/*.png
+public/img/*.jpg
+public/img/*.jpeg
