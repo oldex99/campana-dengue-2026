@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CCSS Área de Salud Cañas — Campaña de prevención del dengue 2026. Lavar, Tapar, Voltear." />
-    <meta property="og:title" content="Día Mundial del Dengue 2026 — Cañas" />
-    <meta property="og:description" content="El país no baja las manos. Vos tampoco. Conocé cómo proteger a tu familia." />
-    <title>Campaña Dengue 2026 — Área de Salud Cañas</title>
+    <meta name="description" content="CCSS Área de Salud Cañas — Campaña de prevención del dengue 2026. Conocé los síntomas, cuándo consultar y cómo proteger a tu familia." />
+    <meta property="og:title" content="Dengue 2026 — Área de Salud Cañas · CCSS" />
+    <meta property="og:description" content="El país no baja las manos. Vos tampoco. Todo lo que necesitás saber sobre el dengue." />
+    <title>Dengue 2026 — Área de Salud Cañas</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div id="progress-bar"></div>
 
     <!-- ===== HERO ===== -->
     <section id="hero" class="section hero">
@@ -20,9 +21,11 @@
         <div class="hero__badge">Día Mundial del Dengue 2026</div>
         <h1 class="hero__title">El país no baja las manos.<br><span class="hero__accent">Vos tampoco.</span></h1>
         <p class="hero__subtitle">CCSS · Área de Salud Cañas</p>
-        <div class="hero__video-wrapper" id="video-placeholder">
+        <div class="hero__video-wrapper">
           <div class="hero__video-thumb" id="play-btn" role="button" tabindex="0" aria-label="Reproducir video">
-            <div class="play-icon">▶</div>
+            <div class="play-ring">
+              <div class="play-icon">▶</div>
+            </div>
             <p class="play-label">Ver el video de la campaña</p>
           </div>
           <iframe id="yt-iframe" class="hero__iframe hidden"
@@ -32,59 +35,245 @@
             title="Video Campaña Dengue 2026">
           </iframe>
         </div>
-        <a href="#ciclo" class="hero__scroll-cta">Conocé más ↓</a>
+        <a href="#que-es" class="hero__scroll-cta">Quiero saber más ↓</a>
+      </div>
+    </section>
+
+    <!-- ===== QUÉ ES EL DENGUE ===== -->
+    <section id="que-es" class="section que-es">
+      <div class="container">
+        <h2 class="section-title reveal">El dengue no es un resfriado</h2>
+        <p class="section-subtitle reveal">Es un virus. Y eso cambia todo.</p>
+
+        <div class="cards-grid reveal">
+          <div class="info-card">
+            <div class="info-card__icon">🦠</div>
+            <h3>Un virus, no una bacteria</h3>
+            <p>Los antibióticos no sirven para el dengue. El cuerpo tiene que pelear solo, y esa pelea dura entre 7 y 10 días. El tratamiento es aliviar los síntomas mientras el sistema inmune hace su trabajo.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card__icon">🔢</div>
+            <h3>Cuatro tipos distintos</h3>
+            <p>Existen 4 serotipos del virus dengue (DENV-1, 2, 3 y 4). Si te da el tipo 1, quedás protegido solo contra ese. Los otros tres siguen siendo una amenaza, y si uno te pica de nuevo, el dengue grave es mucho más probable.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card__icon">🦟</div>
+            <h3>El mosquito es solo el transporte</h3>
+            <p>El <em>Aedes aegypti</em> no fabrica el virus. Lo toma cuando pica a alguien enfermo y lo inyecta cuando pica a alguien sano. El virus viaja en su saliva. Bastan segundos de contacto.</p>
+          </div>
+        </div>
+
+        <div class="alerta-box reveal">
+          <span class="alerta-box__icon">⚠️</span>
+          <div>
+            <strong>Lo que más se subestima:</strong> En Costa Rica circulan los 4 serotipos al mismo tiempo. Que ya te haya dado dengue antes no te protege, te pone en mayor riesgo si te vuelve a dar.
+            <span class="fuente">— CCSS / OPS, 2024</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ===== CICLO DE VIDA ===== -->
     <section id="ciclo" class="section ciclo">
       <div class="container">
-        <h2 class="section-title reveal">El enemigo en tu casa</h2>
-        <p class="section-subtitle reveal">El <em>Aedes aegypti</em> se reproduce en recipientes con agua estancada cerca de vos.</p>
+        <h2 class="section-title reveal">El enemigo vive en tu patio</h2>
+        <p class="section-subtitle reveal">El <em>Aedes aegypti</em> no viaja lejos. Nace, vive y pica a menos de 100 metros de tu casa.</p>
+
         <div class="ciclo__stages reveal">
           <div class="ciclo__stage">
+            <div class="ciclo__num">01</div>
             <div class="ciclo__icon">🥚</div>
             <h3>Huevo</h3>
-            <p>Se pega en las paredes de recipientes con agua</p>
+            <p>Se pega en las paredes de cualquier recipiente con agua. Aguanta la sequía por meses.</p>
           </div>
-          <div class="ciclo__arrow">→</div>
           <div class="ciclo__stage">
+            <div class="ciclo__num">02</div>
             <div class="ciclo__icon">🐛</div>
             <h3>Larva</h3>
-            <p>Vive en el agua 5–7 días</p>
+            <p>Necesita agua para vivir. Ahí pasa 5 a 7 días antes de transformarse.</p>
           </div>
-          <div class="ciclo__arrow">→</div>
           <div class="ciclo__stage">
-            <div class="ciclo__icon">🦟</div>
+            <div class="ciclo__num">03</div>
+            <div class="ciclo__icon">🫘</div>
             <h3>Pupa</h3>
-            <p>Se transforma en 2 días</p>
+            <p>No come, solo se transforma. En 2 días ya es mosquito adulto.</p>
           </div>
-          <div class="ciclo__arrow">→</div>
           <div class="ciclo__stage">
-            <div class="ciclo__icon">⚠️</div>
+            <div class="ciclo__num">04</div>
+            <div class="ciclo__icon">🦟</div>
             <h3>Adulto</h3>
-            <p>Listo para picar y transmitir dengue</p>
+            <p>Pica de día, no de noche. Una hembra puede poner 100 huevos por postura.</p>
           </div>
         </div>
+
         <div class="ciclo__dato reveal">
-          <strong>En solo 10 días:</strong> de 1 huevo a 500 mosquitos adultos
+          <strong>De 1 huevo a 500 mosquitos en 10 días.</strong> Con un solo tarro con agua en el patio.
           <span class="fuente">— OPS, 2023</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== GRÁFICO ===== -->
+    <!-- ===== SÍNTOMAS ===== -->
+    <section id="sintomas" class="section sintomas">
+      <div class="container">
+        <h2 class="section-title reveal">Cómo te ataca el dengue</h2>
+        <p class="section-subtitle reveal">El virus entra al cuerpo sin avisar. Lo que sentís después es el sistema inmune peleando.</p>
+
+        <div class="fases reveal">
+          <div class="fase fase--febril">
+            <div class="fase__header">
+              <span class="fase__num">Días 1–7</span>
+              <h3 class="fase__title">Fase febril</h3>
+            </div>
+            <ul class="fase__lista">
+              <li>Fiebre alta súbita, hasta 40°C</li>
+              <li>Dolor de cabeza fuerte, detrás de los ojos</li>
+              <li>Dolor muscular y de articulaciones intenso <em>(por eso le llaman "fiebre rompehuesos")</em></li>
+              <li>Náuseas y vómitos</li>
+              <li>Sarpullido rojo en la piel</li>
+            </ul>
+          </div>
+
+          <div class="fase fase--critica">
+            <div class="fase__header">
+              <span class="fase__num">Días 3–7</span>
+              <h3 class="fase__title">Fase crítica</h3>
+            </div>
+            <p class="fase__aviso">El momento más peligroso es cuando la fiebre baja. Muchos piensan que ya pasó lo peor. No.</p>
+            <ul class="fase__lista">
+              <li>Las plaquetas caen rápido</li>
+              <li>Los vasos sanguíneos empiezan a tener "fugas"</li>
+              <li>Puede haber sangrados o acumulación de líquidos</li>
+              <li>El riesgo de dengue grave es máximo en esta fase</li>
+            </ul>
+          </div>
+
+          <div class="fase fase--recuperacion">
+            <div class="fase__header">
+              <span class="fase__num">Días 7–10</span>
+              <h3 class="fase__title">Recuperación</h3>
+            </div>
+            <ul class="fase__lista">
+              <li>El cuerpo reabsorbe los líquidos acumulados</li>
+              <li>Las plaquetas vuelven a subir</li>
+              <li>El apetito regresa poco a poco</li>
+              <li>Puede quedar cansancio por semanas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SEÑALES DE ALARMA -->
+        <div class="alarma reveal">
+          <div class="alarma__header">
+            <span class="alarma__icono">🚨</span>
+            <h3>Señales de alarma: ir a emergencias YA</h3>
+          </div>
+          <p class="alarma__intro">Si tenés dengue y aparece cualquiera de estas señales, no esperés a la cita. Ir al EBAIS. Ir a urgencias. Ahora.</p>
+          <div class="alarma__grid">
+            <div class="alarma__item">
+              <span>🤢</span>
+              <p>Vómitos que no paran (3 o más en una hora)</p>
+            </div>
+            <div class="alarma__item">
+              <span>🩸</span>
+              <p>Sangrado de encías, nariz, orina o heces con sangre</p>
+            </div>
+            <div class="alarma__item">
+              <span>😰</span>
+              <p>Dolor abdominal muy fuerte o continuo</p>
+            </div>
+            <div class="alarma__item">
+              <span>💧</span>
+              <p>Acumulación de líquido (barriga hinchada, dificultad para respirar)</p>
+            </div>
+            <div class="alarma__item">
+              <span>😵</span>
+              <p>Confusión, alteración del estado de conciencia</p>
+            </div>
+            <div class="alarma__item">
+              <span>❄️</span>
+              <p>Piel fría, húmeda, color pálido o azulado (shock)</p>
+            </div>
+          </div>
+          <p class="alarma__fuente">Criterios de alarma: OMS 2009 / Protocolo CCSS</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DATOS + SISTEMA (NARRATIVA UNIFICADA) ===== -->
     <section id="datos" class="section datos">
       <div class="container">
-        <h2 class="section-title reveal">Costa Rica frente al dengue</h2>
-        <p class="section-subtitle reveal">Casos confirmados por año — la presión sobre el sistema de salud es real.</p>
+        <h2 class="section-title reveal">Esto ya pasó. Y el sistema casi no aguantó.</h2>
+        <p class="section-subtitle reveal">En 2013, Costa Rica vivió su peor brote de dengue. No fue el virus lo que puso en jaque al país. Fue lo que pasó en los hospitales cuando llegaron todos al mismo tiempo.</p>
+
         <div class="chart-wrapper reveal">
-          <canvas id="grafico-casos" aria-label="Gráfico de casos de dengue en Costa Rica 2020-2024"></canvas>
+          <canvas id="grafico-casos" aria-label="Casos de dengue en Costa Rica por año"></canvas>
         </div>
-        <p class="fuente-chart reveal">Fuente: Ministerio de Salud / OPS-PLISA · Datos en verificación</p>
-        <div class="datos__highlight reveal">
-          <span class="highlight-num">31,000+</span>
-          <span class="highlight-label">casos en 2024 — presión máxima sobre la CCSS</span>
+        <p class="fuente-chart reveal">Fuente: Ministerio de Salud CR / OPS-PLISA · *2024: datos preliminares</p>
+
+        <div class="stats-row reveal">
+          <div class="stat-item">
+            <span class="stat-num" data-target="52247">0+</span>
+            <span class="stat-label">casos en 2013 — récord histórico que duró una década</span>
+            <span class="stat-fuente">Ministerio de Salud CR, 2013</span>
+          </div>
+          <div class="stat-item stat-item--divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="4">0</span>
+            <span class="stat-label">serotipos del virus circulando al mismo tiempo en CR hoy</span>
+            <span class="stat-fuente">CCSS / OPS, 2024</span>
+          </div>
+          <div class="stat-item stat-item--divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="300">0%</span>
+            <span class="stat-label">más demanda de emergencias durante un brote activo</span>
+            <span class="stat-fuente">OPS, 2022</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SISTEMA SATURADO ===== -->
+    <section id="sistema" class="section sistema">
+      <div class="container">
+        <h2 class="section-title reveal">El dengue no es lo que mata.<br>El colapso del sistema, sí.</h2>
+        <p class="section-subtitle reveal">La mortalidad directa del dengue es menos del 0.1% de los casos. El problema real está en otro lado.</p>
+
+        <div class="sistema-argumento reveal">
+          <p class="sistema-argumento__texto">
+            En 2013, el serotipo 3 del virus dengue volvió a Costa Rica después de una década ausente. Casi nadie tenía inmunidad. En nueve meses, la CCSS gastó ¢15,600 millones —cerca de 28.7 millones de dólares— solo en hospitalizaciones. Fueron 5,219 personas internadas y 182,955 consultas en un solo año. El país entero se sintió apretado.
+          </p>
+          <p class="sistema-argumento__texto">
+            Ese año no colapsamos, pero nos rozamos. Y lo que hacía falta para cruzar la línea era sencillo: que llegaran un poco más de pacientes al mismo tiempo. Porque el dengue en sí no mata a casi nadie —la mortalidad es menor al 0.1%—. El problema es que cada persona con señales de alarma necesita una cama, suero, análisis de plaquetas cada 12 horas y 3 a 5 días de monitoreo constante.
+          </p>
+          <p class="sistema-argumento__texto sistema-argumento__texto--enfasis">
+            Hoy los 4 serotipos circulan al mismo tiempo. En 2013 era solo uno el que desbordó el sistema. Lo que viene podría ser peor, y Cañas no es el Hospital México. Tiene las camas que tiene. Cuando esas camas están llenas de dengue y llega alguien con un infarto, ese alguien espera. Esa espera sí puede matar.
+          </p>
+        </div>
+
+        <div class="impacto-grid reveal">
+          <div class="impacto-card">
+            <div class="impacto-card__num">5,219</div>
+            <p>Personas hospitalizadas en 2013. Solo por dengue. En nueve meses. Con la misma infraestructura que existe hoy.</p>
+            <span class="fuente">— CCSS, 2013</span>
+          </div>
+          <div class="impacto-card">
+            <div class="impacto-card__num">3–5</div>
+            <p>Días de internamiento promedio para un caso con señales de alarma. Cada cama ocupada por dengue es una cama que no está disponible para otra emergencia.</p>
+            <span class="fuente">— Protocolo CCSS, 2023</span>
+          </div>
+          <div class="impacto-card">
+            <div class="impacto-card__num">90%</div>
+            <p>De los criaderos del mosquito están dentro o a menos de 50 metros de las casas. El origen del problema no es la ciudad. Es el patio.</p>
+            <span class="fuente">— CCSS, 2023</span>
+          </div>
+        </div>
+
+        <div class="sistema-conclusion reveal">
+          <div class="sistema-conclusion__inner">
+            <p>Vos podés no agarrar dengue este año. Pero si tu vecino tiene un criadero en el patio, el mosquito que salga de ahí no sabe a quién picar. Y si hay brote, el hospital que necesitás — para lo que sea — ya está lleno.</p>
+            <p class="sistema-conclusion__call">Lavar, Tapar, Voltear no es solo cuidarse a uno mismo. Es cuidar el sistema que nos cuida a todos.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -92,8 +281,9 @@
     <!-- ===== CHECKLIST ===== -->
     <section id="accion" class="section accion">
       <div class="container">
-        <h2 class="section-title reveal">Tres acciones que salvan vidas</h2>
-        <p class="section-subtitle reveal">Hacelas cada semana. Sin excepción.</p>
+        <h2 class="section-title reveal">Lo que podés hacer hoy</h2>
+        <p class="section-subtitle reveal">Tres acciones, cada semana. Sin excepción. Son las que más impacto tienen.</p>
+
         <div class="checklist">
           <label class="check-item reveal" data-key="lavar">
             <input type="checkbox" id="check-lavar" />
@@ -101,7 +291,7 @@
               <span class="check-icon">🚿</span>
               <div>
                 <strong>LAVAR</strong>
-                <p>Restregá tanques, pilas y recipientes con agua</p>
+                <p>Restregá tanques, pilas y recipientes con agua. Los huevos se pegan en las paredes y el agua sola no los quita.</p>
               </div>
             </div>
             <span class="check-mark">✓</span>
@@ -112,7 +302,7 @@
               <span class="check-icon">🔒</span>
               <div>
                 <strong>TAPAR</strong>
-                <p>Cubrí todos los recipientes donde guardás agua</p>
+                <p>Cubrí bien todos los recipientes donde guardás agua. Si el mosquito no puede poner los huevos, no hay larvas.</p>
               </div>
             </div>
             <span class="check-mark">✓</span>
@@ -123,27 +313,49 @@
               <span class="check-icon">🔄</span>
               <div>
                 <strong>VOLTEAR</strong>
-                <p>Bota o volteá objetos que acumulen agua: llantas, macetas, cubetas</p>
+                <p>Botá o volteá lo que acumule agua: llantas, macetas, cubetas, tarros, botellas. Si no hay agua, no hay mosquito.</p>
               </div>
             </div>
             <span class="check-mark">✓</span>
           </label>
         </div>
         <div class="checklist__status" id="checklist-status" aria-live="polite"></div>
+
+        <div class="extra-acciones reveal">
+          <h3>Y además...</h3>
+          <div class="extra-grid">
+            <div class="extra-item">
+              <span>🛡️</span>
+              <p>Usá repelente, especialmente en las mañanas y tardes</p>
+            </div>
+            <div class="extra-item">
+              <span>👕</span>
+              <p>Ropa de manga larga en zonas con mucho mosquito</p>
+            </div>
+            <div class="extra-item">
+              <span>📞</span>
+              <p>Reportá criaderos o casos sospechosos al EBAIS de Cañas</p>
+            </div>
+            <div class="extra-item">
+              <span>🏠</span>
+              <p>Revisá el patio completo cada semana, no solo cuando llueve</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
       <div class="container">
-        <div class="footer__logos">
-          <div class="footer__org">
-            <span class="footer__logo-text">CCSS</span>
-            <span class="footer__org-name">Área de Salud Cañas</span>
-          </div>
+        <div class="footer__orgs">
+          <span class="footer__logo-text">CCSS</span>
+          <div class="footer__divider"></div>
+          <span class="footer__org-name">Área de Salud Cañas</span>
         </div>
         <p class="footer__copy">Campaña Día Mundial del Dengue 2026</p>
-        <p class="footer__fuentes">Fuentes: OMS · OPS · CCSS · Ministerio de Salud Costa Rica</p>
+        <p class="footer__fuentes">Fuentes: OMS · OPS-PLISA · CCSS · Ministerio de Salud Costa Rica</p>
+        <p class="footer__domain">dengue2026sacr.online</p>
       </div>
     </footer>
 
