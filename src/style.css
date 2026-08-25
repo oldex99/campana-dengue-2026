@@ -103,11 +103,11 @@ img, video, canvas { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(180deg, rgba(10,14,20,0.72) 0%, rgba(10,14,20,0.85) 55%, rgba(10,14,20,0.97) 100%),
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,71,87,0.22) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(10,14,20,0.42) 0%, rgba(10,14,20,0.58) 45%, rgba(10,14,20,0.88) 100%),
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,71,87,0.18) 0%, transparent 60%),
     image-set(url('/img/hero-mosquito.webp') type('image/webp'));
   background-size: cover, cover, cover;
-  background-position: center, center, center;
+  background-position: center, center, center 42%;
   animation: hero-pulse 8s ease-in-out infinite alternate;
 }
 @keyframes hero-pulse {
@@ -125,7 +125,7 @@ img, video, canvas { max-width: 100%; display: block; }
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  opacity: 0.4;
+  opacity: 0.18;
 }
 
 .hero__inner {
@@ -170,6 +170,8 @@ img, video, canvas { max-width: 100%; display: block; }
   animation: fadeUp 0.9s var(--ease) 0.1s both;
   letter-spacing: 0.005em;
   text-transform: uppercase;
+  /* El titulo va sobre la foto del mosquito: sombra de seguridad */
+  text-shadow: 0 2px 24px rgba(4,6,13,0.85), 0 1px 4px rgba(4,6,13,0.6);
 }
 .hero__accent {
   color: var(--red);
@@ -225,10 +227,13 @@ img, video, canvas { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-  background: linear-gradient(145deg, #0d0505 0%, #0a0f1e 100%);
+  background: rgba(10,14,20,0.34);
+  backdrop-filter: blur(3px) saturate(1.1);
+  -webkit-backdrop-filter: blur(3px) saturate(1.1);
   cursor: pointer;
   transition: background 0.3s ease;
 }
+.hero__video-thumb:hover { background: rgba(10,14,20,0.26); }
 
 .play-ring {
   position: relative;
@@ -288,7 +293,11 @@ img, video, canvas { max-width: 100%; display: block; }
 .hidden { display: none !important; }
 
 .hero__scroll-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1.25rem;
   color: var(--muted);
   text-decoration: none;
   font-size: 0.85rem;
@@ -629,6 +638,9 @@ img, video, canvas { max-width: 100%; display: block; }
 }
 .info-card__img {
   width: 100%;
+  /* height:auto neutraliza el atributo height del HTML; sin esto
+     aspect-ratio no aplica y la imagen sale a su alto original. */
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   background: #0a0e14;
@@ -973,6 +985,22 @@ img, video, canvas { max-width: 100%; display: block; }
   /* Tipografía */
   .section-title { font-size: 1.4rem; }
   .section-subtitle { font-size: 0.88rem; }
+
+  /* Piso de legibilidad en celular.
+     Buena parte de quienes escanean el QR son personas mayores
+     retirando medicamentos: nada de texto por debajo de 12.5px. */
+  .fase__num,
+  .stat-fuente,
+  .fuente,
+  .alarma__fuente,
+  .fuente-chart,
+  .footer__fuentes,
+  .extra-item p,
+  .alarma__item p { font-size: 0.8rem; }
+  .kicker { font-size: 0.78rem; }
+  .info-card p,
+  .fase__lista li,
+  .franja__texto p { font-size: 0.9rem; }
 }
 
 /* Touch devices: remove hover effects q no aplican */
