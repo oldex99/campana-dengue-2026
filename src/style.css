@@ -1,23 +1,51 @@
-/* ===== TOKENS ===== */
+/* ===== TOKENS =====
+   Paleta clara institucional por defecto.
+   Las secciones con .seccion-oscura redefinen los mismos tokens
+   para el quiebre dramático (hero, historia, sistema, footer). */
 :root {
-  --bg: #04060d;
-  --surface: #0d1117;
-  --surface-2: #161b22;
-  --surface-3: #1f2937;
-  --red: #e63946;
-  --red-glow: rgba(230,57,70,0.35);
-  --red-soft: rgba(230,57,70,0.12);
-  --amber: #f59e0b;
-  --green: #22c55e;
-  --green-soft: rgba(34,197,94,0.12);
-  --text: #f0f6fc;
-  --muted: #8b949e;
-  --border: rgba(255,255,255,0.08);
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --surface-3: #f0ece7;
+  --red: #c1121f;
+  --red-glow: rgba(193,18,31,0.22);
+  --red-soft: rgba(193,18,31,0.06);
+  --amber: #b45309;
+  --amber-soft: rgba(180,83,9,0.07);
+  --green: #15803d;
+  --green-soft: rgba(21,128,61,0.07);
+  --text: #12161c;
+  --muted: #5a6472;
+  --border: rgba(18,22,28,0.13);
+  --sombra: 0 1px 2px rgba(18,22,28,0.04), 0 6px 20px rgba(18,22,28,0.05);
+  --sombra-alta: 0 2px 4px rgba(18,22,28,0.05), 0 16px 40px rgba(18,22,28,0.08);
   --font: 'Inter', system-ui, sans-serif;
   --font-display: 'Archivo Black', 'Inter', system-ui, sans-serif;
   --radius: 14px;
   --max-w: 880px;
   --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+/* Quiebre tonal: peso emocional */
+.seccion-oscura {
+  --bg: #0a0e14;
+  --surface: #121821;
+  --surface-2: #161d28;
+  --surface-3: #1f2937;
+  --red: #ff4757;
+  --red-glow: rgba(255,71,87,0.35);
+  --red-soft: rgba(255,71,87,0.12);
+  --amber: #fbbf24;
+  --amber-soft: rgba(251,191,36,0.12);
+  --green: #22c55e;
+  --green-soft: rgba(34,197,94,0.12);
+  --text: #ffffff;
+  --muted: #a8b3c4;
+  --border: rgba(255,255,255,0.11);
+  --sombra: 0 8px 30px rgba(0,0,0,0.35);
+  --sombra-alta: 0 20px 50px rgba(0,0,0,0.45);
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* ===== RESET ===== */
@@ -67,14 +95,19 @@ img, video, canvas { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
-/* Animated background gradient */
+/* Imagen de fondo del mosquito + degradados.
+   Cuando exista /img/hero-mosquito.webp se muestra automáticamente;
+   mientras tanto solo se ven los degradados. */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(230,57,70,0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(230,57,70,0.1) 0%, transparent 50%);
+  background-image:
+    linear-gradient(180deg, rgba(10,14,20,0.72) 0%, rgba(10,14,20,0.85) 55%, rgba(10,14,20,0.97) 100%),
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,71,87,0.22) 0%, transparent 60%),
+    image-set(url('/img/hero-mosquito.webp') type('image/webp'));
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
   animation: hero-pulse 8s ease-in-out infinite alternate;
 }
 @keyframes hero-pulse {
@@ -343,14 +376,14 @@ img, video, canvas { max-width: 100%; display: block; }
 }
 
 /* ===== CICLO ===== */
-.ciclo { background: var(--surface); position: relative; overflow: hidden; }
+.ciclo { background: var(--surface); position: relative; overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .ciclo::before {
   content: '';
   position: absolute;
   top: -200px; right: -200px;
   width: 500px; height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(230,57,70,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--red-soft) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -363,6 +396,8 @@ img, video, canvas { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow: var(--sombra);
+  position: relative;
 }
 
 .ciclo__stage {
@@ -459,6 +494,7 @@ img, video, canvas { max-width: 100%; display: block; }
   background: var(--surface-2);
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--sombra);
   cursor: pointer;
   transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s var(--ease), box-shadow 0.3s ease;
   position: relative;
@@ -507,16 +543,16 @@ img, video, canvas { max-width: 100%; display: block; }
 }
 
 .check-item:hover:not(.checked) {
-  border-color: rgba(255,255,255,0.15);
+  border-color: var(--muted);
   transform: translateX(4px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: var(--sombra-alta);
 }
 .check-item:hover .check-icon { transform: scale(1.12); }
 
 .check-item.checked {
   border-color: var(--green);
   transform: translateX(6px);
-  box-shadow: 0 0 0 1px rgba(34,197,94,0.2), inset 0 0 20px var(--green-soft);
+  box-shadow: 0 0 0 1px var(--green), var(--sombra);
 }
 .check-item.checked::before { opacity: 1; }
 .check-item.checked .check-mark { opacity: 1; transform: scale(1) rotate(0deg); }
@@ -536,7 +572,6 @@ img, video, canvas { max-width: 100%; display: block; }
 
 /* ===== FOOTER ===== */
 .footer {
-  background: #020408;
   border-top: 1px solid var(--border);
   padding: 3rem 0 2rem;
   text-align: center;
@@ -566,10 +601,10 @@ img, video, canvas { max-width: 100%; display: block; }
   font-weight: 600;
 }
 .footer__copy { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.3rem; }
-.footer__fuentes { color: #3d444d; font-size: 0.72rem; }
+.footer__fuentes { color: var(--muted); opacity: 0.7; font-size: 0.72rem; }
 
 /* ===== QUÉ ES EL DENGUE ===== */
-.que-es { background: var(--surface); }
+.que-es { background: var(--bg); }
 
 .cards-grid {
   display: grid;
@@ -582,9 +617,14 @@ img, video, canvas { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem 1.5rem;
-  transition: border-color 0.3s ease, transform 0.3s var(--ease);
+  box-shadow: var(--sombra);
+  transition: border-color 0.3s ease, transform 0.3s var(--ease), box-shadow 0.3s ease;
 }
-.info-card:hover { border-color: rgba(230,57,70,0.3); transform: translateY(-3px); }
+.info-card:hover {
+  border-color: var(--red);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-alta);
+}
 .info-card__icon { font-size: 2.25rem; margin-bottom: 1rem; display: block; }
 .info-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; }
 .info-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -593,8 +633,9 @@ img, video, canvas { max-width: 100%; display: block; }
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  background: rgba(245,158,11,0.1);
-  border: 1px solid rgba(245,158,11,0.3);
+  background: var(--amber-soft);
+  border: 1px solid var(--amber);
+  border-left-width: 4px;
   border-radius: var(--radius);
   padding: 1.25rem 1.5rem;
   font-size: 0.9rem;
@@ -614,13 +655,16 @@ img, video, canvas { max-width: 100%; display: block; }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--sombra);
 }
 .fase__header {
   padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border);
 }
-.fase--febril .fase__header { background: rgba(230,57,70,0.12); border-bottom: 1px solid rgba(230,57,70,0.2); }
-.fase--critica .fase__header { background: rgba(245,158,11,0.12); border-bottom: 1px solid rgba(245,158,11,0.2); }
-.fase--recuperacion .fase__header { background: rgba(34,197,94,0.1); border-bottom: 1px solid rgba(34,197,94,0.2); }
+.fase--febril .fase__header { background: var(--red-soft); border-top: 3px solid var(--red); }
+.fase--critica .fase__header { background: var(--amber-soft); border-top: 3px solid var(--amber); }
+.fase--recuperacion .fase__header { background: var(--green-soft); border-top: 3px solid var(--green); }
 
 .fase__num {
   font-size: 0.68rem;
@@ -661,8 +705,8 @@ img, video, canvas { max-width: 100%; display: block; }
 .fase--critica .fase__lista li::before { color: var(--amber); }
 
 .alarma {
-  background: rgba(230,57,70,0.06);
-  border: 1.5px solid rgba(230,57,70,0.3);
+  background: var(--red-soft);
+  border: 1.5px solid var(--red);
   border-radius: var(--radius);
   padding: 2rem;
 }
@@ -687,7 +731,8 @@ img, video, canvas { max-width: 100%; display: block; }
   background: var(--surface);
   border-radius: 8px;
   padding: 0.875rem;
-  border: 1px solid rgba(230,57,70,0.15);
+  border: 1px solid var(--border);
+  box-shadow: var(--sombra);
 }
 .alarma__item p { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
 .alarma__fuente { font-size: 0.72rem; color: var(--muted); font-style: italic; }
@@ -720,7 +765,7 @@ img, video, canvas { max-width: 100%; display: block; }
   font-variant-numeric: tabular-nums;
 }
 .stat-label { display: block; font-size: 0.82rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.4rem; }
-.stat-fuente { display: block; font-size: 0.68rem; color: #4b5563; font-style: italic; }
+.stat-fuente { display: block; font-size: 0.68rem; color: var(--muted); opacity: 0.75; font-style: italic; }
 
 /* ===== SISTEMA ===== */
 .sistema { background: var(--surface); }
@@ -766,6 +811,7 @@ img, video, canvas { max-width: 100%; display: block; }
   background: var(--surface-2);
   border-radius: var(--radius);
   border: 1px solid var(--border);
+  box-shadow: var(--sombra);
 }
 .extra-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
 
@@ -816,7 +862,7 @@ img, video, canvas { max-width: 100%; display: block; }
 }
 
 /* ===== FOOTER DOMAIN ===== */
-.footer__domain { color: #4b5563; font-size: 0.75rem; margin-top: 0.5rem; font-family: monospace; }
+.footer__domain { color: var(--muted); opacity: 0.8; font-size: 0.75rem; margin-top: 0.5rem; font-family: monospace; }
 
 /* ===== RESPONSIVE MÓVIL ===== */
 @media (max-width: 640px) {

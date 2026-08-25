@@ -170,16 +170,16 @@ if (canvasEl) {
           datasets: [{
             label: 'Casos confirmados',
             data: [52247, 19800, 8700, 11200, 9100, 8300, 11200, 5200, 4800, 8900, 11500, 33000],
-            borderColor: '#e63946',
+            borderColor: '#ff4757',
             backgroundColor: ctx => {
               const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300)
-              g.addColorStop(0, 'rgba(230,57,70,0.28)')
-              g.addColorStop(1, 'rgba(230,57,70,0)')
+              g.addColorStop(0, 'rgba(255,71,87,0.28)')
+              g.addColorStop(1, 'rgba(255,71,87,0)')
               return g
             },
             borderWidth: 2.5,
-            pointBackgroundColor: (ctx) => ctx.dataIndex === 0 ? '#ff6b35' : '#e63946',
-            pointBorderColor: '#04060d',
+            pointBackgroundColor: (ctx) => ctx.dataIndex === 0 ? '#ff6b35' : '#ff4757',
+            pointBorderColor: '#0a0e14',
             pointBorderWidth: (ctx) => ctx.dataIndex === 0 ? 3 : 2,
             pointRadius: (ctx) => ctx.dataIndex === 0 ? 9 : 5,
             pointHoverRadius: (ctx) => ctx.dataIndex === 0 ? 12 : 8,
@@ -232,7 +232,7 @@ playBtn?.addEventListener('click', () => {
     if (label) {
       gsap.to(label, { opacity: 0, duration: 0.2, onComplete() {
         label.textContent = '🎬 Video en producción — ¡pronto!'
-        label.style.color = '#e63946'
+        label.style.color = '#ff4757'
         gsap.to(label, { opacity: 1, duration: 0.3 })
       }})
     }
