@@ -11,3 +11,6 @@ dist
 public/img/*.png
 public/img/*.jpg
 public/img/*.jpeg
+
+# Codigos QR: material de imprenta, no del sitio
+Qq8*
