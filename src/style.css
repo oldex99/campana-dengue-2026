@@ -992,6 +992,94 @@ a, button, label, [role="button"], input, summary {
   margin-bottom: 0;
 }
 
+/* ===== A DÓNDE ACUDIR ===== */
+.acudir {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.acudir__titulo {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.acudir__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.acudir__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--amber);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+.acudir__card--ccss { border-top-color: var(--red); }
+
+.acudir__quien {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+.acudir__card--ccss .acudir__quien { color: var(--red); }
+
+.acudir__card h4 {
+  font-size: 1.125rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+.acudir__card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.acudir__accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  background: var(--text);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.25s ease, transform 0.2s var(--ease);
+}
+.acudir__accion svg { width: 17px; height: 17px; }
+.acudir__accion:hover { background: var(--red); transform: translateY(-1px); }
+
+/* El lado de la CCSS no lleva boton: la accion es fisica y la persona
+   ya esta en el Area de Salud cuando escanea el QR. */
+.acudir__destino {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.6rem 0;
+  color: var(--text) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 700;
+  margin-bottom: 0 !important;
+}
+.acudir__destino svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--red); }
+
+.acudir__nota {
+  font-size: 0.75rem !important;
+  margin: 0.75rem 0 0 !important;
+  line-height: 1.5;
+}
+
 /* ===== FOOTER DOMAIN ===== */
 .footer__domain { color: var(--muted); opacity: 0.8; font-size: 0.75rem; margin-top: 0.5rem; font-family: monospace; }
 
@@ -1039,6 +1127,10 @@ a, button, label, [role="button"], input, summary {
 
   /* Ciclo: 2x2 con imagen cuadrada */
   .ciclo__cuerpo { padding: 0.9rem 0.7rem 1.1rem; }
+
+  /* A dónde acudir: una columna */
+  .acudir__grid { grid-template-columns: 1fr; }
+  .acudir__accion { width: 100%; justify-content: center; }
 
   /* Tipografía */
   .section-title { font-size: 1.375rem; }
