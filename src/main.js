@@ -2,7 +2,8 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { inject, track } from '@vercel/analytics'
-import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Filler } from 'chart.js'
+// Chart.js NO se importa aca a proposito: se carga con import() dinamico
+// recien cuando el grafico entra en pantalla. Ver "GRAFICO" mas abajo.
 
 gsap.registerPlugin(ScrollTrigger)
 inject()
@@ -37,7 +38,6 @@ document.querySelectorAll('section[id]').forEach(sec => {
     onEnter: () => track('seccion_vista', { seccion: sec.id })
   })
 })
-Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Filler)
 
 // ===== SCROLL PROGRESS BAR =====
 const bar = document.getElementById('progress-bar')
@@ -129,8 +129,11 @@ document.querySelectorAll('.ciclo__stage').forEach(stage => {
 revealSection('#datos', '#datos .section-title')
 revealSection('#datos', '#datos .section-subtitle')
 
+// Sin opacidad a proposito: si el disparador no llega a activarse, un
+// from() con opacity:0 deja el grafico invisible para siempre. Animando
+// solo el desplazamiento, el peor caso es que no se deslice.
 gsap.from('.chart-wrapper', {
-  y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+  y: 40, duration: 0.8, ease: 'power3.out',
   scrollTrigger: { trigger: '.chart-wrapper', start: 'top 85%' }
 })
 
@@ -189,13 +192,30 @@ gsap.from('.check-item', {
 // ===== GRÁFICO =====
 const canvasEl = document.getElementById('grafico-casos')
 let chartCreated = false
+
 if (canvasEl) {
-  ScrollTrigger.create({
-    trigger: canvasEl,
-    start: 'top 80%',
-    onEnter() {
+  // Se usa IntersectionObserver y no ScrollTrigger: el grafico es contenido
+  // central (los datos del 2013) y no puede depender de que se dispare una
+  // animacion. El observer es nativo y solo pregunta "esto esta a la vista".
+  const observador = new IntersectionObserver((entradas, obs) => {
+    if (!entradas.some(e => e.isIntersecting)) return
+    obs.disconnect()
+    dibujarGrafico()
+  }, { rootMargin: '200px 0px' })
+  observador.observe(canvasEl)
+
+  async function dibujarGrafico() {
       if (chartCreated) return
       chartCreated = true
+
+      // Solo lo necesario para una linea con relleno y tooltip
+      const {
+        Chart, LineController, LineElement, PointElement,
+        LinearScale, CategoryScale, Tooltip, Filler
+      } = await import('chart.js')
+      Chart.register(LineController, LineElement, PointElement,
+        LinearScale, CategoryScale, Tooltip, Filler)
+
       new Chart(canvasEl, {
         type: 'line',
         data: {
@@ -250,8 +270,7 @@ if (canvasEl) {
           }
         }
       })
-    }
-  })
+  }
 }
 
 // ===== VIDEO =====
