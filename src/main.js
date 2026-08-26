@@ -71,7 +71,7 @@ mm.add('(min-width: 768px)', () => {
 
 // ===== KICKERS =====
 document.querySelectorAll('.kicker').forEach(k => {
-  gsap.from(k, {
+  gsap.from(k, { clearProps: 'transform',
     y: 16,
     opacity: 0,
     duration: 0.6,
@@ -82,7 +82,7 @@ document.querySelectorAll('.kicker').forEach(k => {
 
 // ===== SECTION REVEAL UTILITY =====
 function revealSection(trigger, targets, stagger = 0.12) {
-  gsap.from(targets, {
+  gsap.from(targets, { clearProps: 'transform',
     y: 48,
     opacity: 0,
     duration: 0.75,
@@ -99,7 +99,7 @@ function revealSection(trigger, targets, stagger = 0.12) {
 // ===== CICLO SECTION =====
 revealSection('#ciclo', '#ciclo .section-title', 0)
 revealSection('#ciclo', '#ciclo .section-subtitle', 0)
-gsap.from('.ciclo__stage', {
+gsap.from('.ciclo__stage', { clearProps: 'transform',
   y: 56,
   opacity: 0,
   duration: 0.65,
@@ -107,7 +107,7 @@ gsap.from('.ciclo__stage', {
   ease: 'power3.out',
   scrollTrigger: { trigger: '.ciclo__stages', start: 'top 85%' }
 })
-gsap.from('.ciclo__dato', {
+gsap.from('.ciclo__dato', { clearProps: 'transform',
   y: 32,
   opacity: 0,
   duration: 0.6,
@@ -132,7 +132,7 @@ revealSection('#datos', '#datos .section-subtitle')
 // Sin opacidad a proposito: si el disparador no llega a activarse, un
 // from() con opacity:0 deja el grafico invisible para siempre. Animando
 // solo el desplazamiento, el peor caso es que no se deslice.
-gsap.from('.chart-wrapper', {
+gsap.from('.chart-wrapper', { clearProps: 'transform',
   y: 40, duration: 0.8, ease: 'power3.out',
   scrollTrigger: { trigger: '.chart-wrapper', start: 'top 85%' }
 })
@@ -154,7 +154,7 @@ document.querySelectorAll('.stat-num').forEach(el => {
     }
   })
 })
-gsap.from('.stat-item:not(.stat-item--divider)', {
+gsap.from('.stat-item:not(.stat-item--divider)', { clearProps: 'transform',
   y: 30, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
   scrollTrigger: { trigger: '.stats-row', start: 'top 85%' }
 })
@@ -162,25 +162,25 @@ gsap.from('.stat-item:not(.stat-item--divider)', {
 // ===== SECCIONES NUEVAS =====
 revealSection('#que-es', '#que-es .section-title')
 revealSection('#que-es', '#que-es .section-subtitle')
-gsap.from('.info-card', { y: 40, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.cards-grid', start: 'top 85%' } })
-gsap.from('.alerta-box', { y: 24, opacity: 0, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: '.alerta-box', start: 'top 88%' } })
+gsap.from('.info-card', { clearProps: 'transform', y: 40, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.cards-grid', start: 'top 85%' } })
+gsap.from('.alerta-box', { clearProps: 'transform', y: 24, opacity: 0, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: '.alerta-box', start: 'top 88%' } })
 
 revealSection('#sintomas', '#sintomas .section-title')
 revealSection('#sintomas', '#sintomas .section-subtitle')
-gsap.from('.fase', { y: 40, opacity: 0, duration: 0.65, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.fases', start: 'top 85%' } })
-gsap.from('.alarma', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.alarma', start: 'top 85%' } })
+gsap.from('.fase', { clearProps: 'transform', y: 40, opacity: 0, duration: 0.65, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.fases', start: 'top 85%' } })
+gsap.from('.alarma', { clearProps: 'transform', y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.alarma', start: 'top 85%' } })
 
 revealSection('#sistema', '#sistema .section-title')
 revealSection('#sistema', '#sistema .section-subtitle')
-gsap.from('.sistema-argumento', { y: 36, opacity: 0, duration: 0.75, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-argumento', start: 'top 85%' } })
-gsap.from('.impacto-card', { y: 40, opacity: 0, duration: 0.65, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.impacto-grid', start: 'top 85%' } })
-gsap.from('.sistema-conclusion', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-conclusion', start: 'top 88%' } })
+gsap.from('.sistema-argumento', { clearProps: 'transform', y: 36, opacity: 0, duration: 0.75, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-argumento', start: 'top 85%' } })
+gsap.from('.impacto-card', { clearProps: 'transform', y: 40, opacity: 0, duration: 0.65, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.impacto-grid', start: 'top 85%' } })
+gsap.from('.sistema-conclusion', { clearProps: 'transform', y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.sistema-conclusion', start: 'top 88%' } })
 
 // ===== CHECKLIST SECTION =====
 revealSection('#accion', '#accion .section-title')
 revealSection('#accion', '#accion .section-subtitle')
 
-gsap.from('.check-item', {
+gsap.from('.check-item', { clearProps: 'transform',
   x: -40,
   opacity: 0,
   duration: 0.6,
@@ -365,7 +365,7 @@ document.querySelectorAll('.check-item').forEach(item => {
 loadChecks()
 
 // ===== FOOTER REVEAL =====
-gsap.from('.footer__orgs, .footer__copy, .footer__fuentes', {
+gsap.from('.footer__orgs, .footer__copy, .footer__fuentes', { clearProps: 'transform',
   y: 24, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out',
   scrollTrigger: { trigger: '.footer', start: 'top 90%' }
 })

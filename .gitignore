@@ -17,3 +17,6 @@ public/img/*.jpeg
 
 # Codigos QR: material de imprenta, no del sitio
 Qq8*
+
+# Capturas de Playwright: se regeneran, no van al repo
+capturas/
