@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dengue2026sacr.online/sitemap.xml

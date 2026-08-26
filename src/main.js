@@ -1,9 +1,42 @@
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { inject, track } from '@vercel/analytics'
 import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Filler } from 'chart.js'
 
 gsap.registerPlugin(ScrollTrigger)
+inject()
+
+// ===== ANALITICA DE LECTURA =====
+// La campana se evalua por si la gente LEE, no solo por si entra.
+// Se marca hasta donde llego cada visita y que secciones alcanzo.
+const hitosScroll = [25, 50, 75, 100]
+const hitosVistos = new Set()
+
+ScrollTrigger.create({
+  trigger: 'body',
+  start: 'top top',
+  end: 'bottom bottom',
+  onUpdate(self) {
+    const pct = Math.round(self.progress * 100)
+    for (const h of hitosScroll) {
+      if (pct >= h && !hitosVistos.has(h)) {
+        hitosVistos.add(h)
+        track('scroll', { profundidad: h })
+      }
+    }
+  }
+})
+
+// Que secciones llega a ver realmente
+document.querySelectorAll('section[id]').forEach(sec => {
+  ScrollTrigger.create({
+    trigger: sec,
+    start: 'top 70%',
+    once: true,
+    onEnter: () => track('seccion_vista', { seccion: sec.id })
+  })
+})
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Filler)
 
 // ===== SCROLL PROGRESS BAR =====
@@ -289,6 +322,11 @@ document.querySelectorAll('.check-item').forEach(item => {
     localStorage.setItem(`d-${key}`, input.checked ? '1' : '0')
 
     if (input.checked) {
+      track('accion_marcada', { accion: key })
+      // Las tres marcadas es la conversion de la campana
+      if (KEYS.every(k => localStorage.getItem(`d-${k}`) === '1')) {
+        track('checklist_completo')
+      }
       gsap.fromTo(item,
         { x: 0 },
         { x: 8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power2.inOut' }

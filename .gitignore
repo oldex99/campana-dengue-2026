@@ -11,6 +11,9 @@ dist
 public/img/*.png
 public/img/*.jpg
 public/img/*.jpeg
+# og.jpg es la excepcion: no es un original, es la vista previa que
+# sirve el sitio al compartirse. Tiene que viajar al repo.
+!public/img/og.jpg
 
 # Codigos QR: material de imprenta, no del sitio
 Qq8*
