@@ -140,7 +140,7 @@ gsap.from('.chart-wrapper', { clearProps: 'transform',
 // Animated counters (stats-row)
 document.querySelectorAll('.stat-num').forEach(el => {
   const target = parseInt(el.dataset.target)
-  const isSuffix = target === 4 ? '' : target === 300 ? '%' : '+'
+  const isSuffix = target > 1000 ? '+' : '%'
   const snap = target > 1000 ? 500 : 1
   const obj = { val: 0 }
   gsap.to(obj, {
@@ -219,10 +219,10 @@ if (canvasEl) {
       new Chart(canvasEl, {
         type: 'line',
         data: {
-          labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024*'],
+          labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026*'],
           datasets: [{
-            label: 'Casos confirmados',
-            data: [52247, 19800, 8700, 11200, 9100, 8300, 11200, 5200, 4800, 8900, 11500, 33000],
+            label: 'Casos',
+            data: [52247, 19800, 8700, 11200, 9100, 8300, 11200, 5200, 4800, 8900, 11500, 30000, 4274, 3052],
             borderColor: '#ff4757',
             backgroundColor: ctx => {
               const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300)
@@ -231,13 +231,21 @@ if (canvasEl) {
               return g
             },
             borderWidth: 2.5,
-            pointBackgroundColor: (ctx) => ctx.dataIndex === 0 ? '#ff6b35' : '#ff4757',
+            // Tres momentos marcados: el pico de 2013, el minimo historico
+            // de 2025 y el repunte actual. El resto queda de fondo.
+            pointBackgroundColor: ctx => ({ 0: '#ff6b35', 12: '#22c55e', 13: '#ff4757' })[ctx.dataIndex] || '#ff4757',
             pointBorderColor: '#0a0e14',
-            pointBorderWidth: (ctx) => ctx.dataIndex === 0 ? 3 : 2,
-            pointRadius: (ctx) => ctx.dataIndex === 0 ? 9 : 5,
-            pointHoverRadius: (ctx) => ctx.dataIndex === 0 ? 12 : 8,
+            pointBorderWidth: ctx => [0, 12, 13].includes(ctx.dataIndex) ? 3 : 2,
+            pointRadius: ctx => [0, 12, 13].includes(ctx.dataIndex) ? 9 : 4,
+            pointHoverRadius: ctx => [0, 12, 13].includes(ctx.dataIndex) ? 12 : 8,
             tension: 0.45,
             fill: true,
+            // 2026 va punteado: es un ano en curso, no un total anual.
+            // Sin esta marca el ultimo punto se lee como si fuera mas bajo
+            // que 2025, cuando en realidad son periodos de distinto largo.
+            segment: {
+              borderDash: ctx => ctx.p1DataIndex === 13 ? [7, 5] : undefined
+            },
           }]
         },
         options: {
