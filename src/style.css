@@ -412,15 +412,25 @@ img, video, canvas { max-width: 100%; display: block; }
 .ciclo__stage {
   text-align: center;
   flex: 1;
-  padding: 2rem 1.25rem;
   background: var(--surface-2);
-  transition: background 0.3s ease, transform 0.3s var(--ease);
+  transition: background 0.3s ease;
   position: relative;
   cursor: default;
+  overflow: hidden;
 }
 .ciclo__stage + .ciclo__stage { border-left: 1px solid var(--border); }
 .ciclo__stage:hover { background: var(--surface-3); }
-.ciclo__stage:hover .ciclo__icon { transform: scale(1.2) rotate(-5deg); }
+.ciclo__stage:hover .ciclo__img { transform: scale(1.06); }
+
+.ciclo__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #0a0e14;
+  transition: transform 0.5s var(--ease);
+}
+.ciclo__cuerpo { padding: 1.25rem 1rem 1.5rem; }
 
 .ciclo__num {
   font-size: 0.65rem;
@@ -527,6 +537,15 @@ img, video, canvas { max-width: 100%; display: block; }
   flex: 1;
   position: relative;
 }
+.check-img {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 10px;
+  position: relative;
+  transition: transform 0.35s var(--ease);
+}
 .check-icon {
   font-size: 2.25rem;
   flex-shrink: 0;
@@ -556,7 +575,8 @@ img, video, canvas { max-width: 100%; display: block; }
   transform: translateX(4px);
   box-shadow: var(--sombra-alta);
 }
-.check-item:hover .check-icon { transform: scale(1.12); }
+.check-item:hover .check-icon,
+.check-item:hover .check-img { transform: scale(1.06); }
 
 .check-item.checked {
   border-color: var(--green);
@@ -978,9 +998,14 @@ img, video, canvas { max-width: 100%; display: block; }
   .ciclo__stage:nth-child(3), .ciclo__stage:nth-child(4) { border-top: 1px solid var(--border); }
 
   /* Checklist */
-  .check-item { padding: 1.1rem; min-height: 72px; }
-  .check-icon { font-size: 2rem; }
+  .check-item { padding: 0.9rem; min-height: 72px; gap: 0.85rem; }
+  .check-img { width: 72px; height: 72px; }
+  .check-content { gap: 0.75rem; }
   .check-content strong { font-size: 1rem; }
+  .check-content p { font-size: 0.8rem; }
+
+  /* Ciclo: 2x2 con imagen cuadrada */
+  .ciclo__cuerpo { padding: 0.9rem 0.7rem 1.1rem; }
 
   /* Tipografía */
   .section-title { font-size: 1.4rem; }
