@@ -313,11 +313,14 @@ function loadChecks() {
 }
 
 document.querySelectorAll('.check-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const key = item.dataset.key
-    const input = document.getElementById(`check-${key}`)
-    if (!input) return
-    input.checked = !input.checked
+  const key = item.dataset.key
+  const input = document.getElementById(`check-${key}`)
+  if (!input) return
+
+  // Se escucha el cambio de la casilla y no el clic en la tarjeta.
+  // Al ser un <label>, el clic ya marca la casilla por si mismo, asi que
+  // alternarla a mano la dejaria igual. De paso funciona con teclado.
+  input.addEventListener('change', () => {
     item.classList.toggle('checked', input.checked)
     localStorage.setItem(`d-${key}`, input.checked ? '1' : '0')
 

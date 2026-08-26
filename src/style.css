@@ -60,6 +60,20 @@ body {
 }
 img, video, canvas { max-width: 100%; display: block; }
 
+/* ===== FOCO Y TOQUE =====
+   Se quita el recuadro gris que Chrome pinta al tocar, y en su lugar
+   se define un foco propio. Ojo: solo :focus-visible, para que el
+   anillo aparezca al navegar con teclado y no al tocar con el dedo. */
+a, button, label, [role="button"], input, summary {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus { outline: none; }
+:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ===== SCROLL PROGRESS BAR ===== */
 #progress-bar {
   position: fixed;
@@ -528,7 +542,26 @@ img, video, canvas { max-width: 100%; display: block; }
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.check-item input[type="checkbox"] { display: none; }
+/* La casilla se oculta a la vista pero NO se saca del documento:
+   con display:none quedaba fuera del orden de tabulación y era
+   imposible marcar las acciones con el teclado. */
+.check-item input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* El anillo de foco se dibuja sobre la tarjeta, no sobre la casilla oculta */
+.check-item:has(input:focus-visible) {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
 
 .check-content {
   display: flex;
