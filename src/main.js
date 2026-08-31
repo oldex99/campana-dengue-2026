@@ -222,7 +222,13 @@ if (canvasEl) {
           labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026*'],
           datasets: [{
             label: 'Casos',
-            data: [52247, 19800, 8700, 11200, 9100, 8300, 11200, 5200, 4800, 8900, 11500, 30000, 4274, 3052],
+            // Casos notificados, serie de la Direccion de Vigilancia de la
+            // Salud y la OPS. Toda la serie es del mismo tipo de dato y de
+            // año completo, salvo 2026 que va a la semana 32 y por eso se
+            // dibuja punteado. Los años 2014-2022 eran estimaciones mias
+            // para dar forma a la curva y estaban muy lejos: 2023 figuraba
+            // con 11.500 cuando fueron 30.649.
+            data: [49993, 11140, 17258, 22209, 5572, 2735, 8179, 10056, 5175, 7485, 30649, 31259, 5812, 3437],
             borderColor: '#ff4757',
             backgroundColor: ctx => {
               const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300)
@@ -284,7 +290,7 @@ if (canvasEl) {
 // ===== VIDEO =====
 const playBtn = document.getElementById('play-btn')
 const iframe  = document.getElementById('yt-iframe')
-const VIDEO_ID = 'o3VFv4A5Iog'
+const VIDEO_ID = 'mBbAGwoIvzk'
 
 playBtn?.addEventListener('click', () => {
   gsap.to(playBtn, { opacity: 0, scale: 0.9, duration: 0.3, onComplete() {
