@@ -154,7 +154,10 @@ document.querySelectorAll('.stat-num').forEach(el => {
     snap: { val: 1 },
     scrollTrigger: { trigger: '.stats-row', start: 'top 80%', toggleActions: 'play none none none' },
     onUpdate() {
-      el.textContent = obj.val.toLocaleString('es-CR') + sufijo
+      // es-ES y no es-CR: es-CR separa los miles con espacio (49 993) y
+      // el resto de la pagina usa punto (31.259). Mismo numero, dos
+      // formas, en parrafos vecinos.
+      el.textContent = obj.val.toLocaleString('es-ES') + sufijo
     }
   })
 })
