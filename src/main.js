@@ -284,24 +284,18 @@ if (canvasEl) {
 // ===== VIDEO =====
 const playBtn = document.getElementById('play-btn')
 const iframe  = document.getElementById('yt-iframe')
-const VIDEO_ID = 'PENDIENTE'
+const VIDEO_ID = 'o3VFv4A5Iog'
 
 playBtn?.addEventListener('click', () => {
-  if (VIDEO_ID === 'PENDIENTE') {
-    const label = playBtn.querySelector('.play-label')
-    if (label) {
-      gsap.to(label, { opacity: 0, duration: 0.2, onComplete() {
-        label.textContent = '🎬 Video en producción — ¡pronto!'
-        label.style.color = '#ff4757'
-        gsap.to(label, { opacity: 1, duration: 0.3 })
-      }})
-    }
-    return
-  }
   gsap.to(playBtn, { opacity: 0, scale: 0.9, duration: 0.3, onComplete() {
     playBtn.classList.add('hidden')
     iframe.classList.remove('hidden')
-    iframe.src = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`
+    // cc_load_policy=0: los subtítulos ya van quemados en la imagen, así que
+    // si el reproductor enciende los suyos el texto sale duplicado.
+    // playsinline=1 para que en iPhone no se abra a pantalla completa y la
+    // persona pierda de vista la página, que es adonde queremos que siga.
+    iframe.src = `https://www.youtube.com/embed/${VIDEO_ID}` +
+      `?autoplay=1&rel=0&cc_load_policy=0&playsinline=1&modestbranding=1`
   }})
 })
 playBtn?.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') playBtn.click() })
