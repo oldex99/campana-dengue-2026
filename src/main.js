@@ -154,10 +154,11 @@ document.querySelectorAll('.stat-num').forEach(el => {
     snap: { val: 1 },
     scrollTrigger: { trigger: '.stats-row', start: 'top 80%', toggleActions: 'play none none none' },
     onUpdate() {
-      // es-ES y no es-CR: es-CR separa los miles con espacio (49 993) y
-      // el resto de la pagina usa punto (31.259). Mismo numero, dos
-      // formas, en parrafos vecinos.
-      el.textContent = obj.val.toLocaleString('es-ES') + sufijo
+      // Separador puesto a mano y no con toLocaleString: es-CR agrupa con
+      // espacio (49 993) y es-ES no agrupa los numeros de cuatro cifras
+      // (5812). El resto de la pagina escribe 31.259 y 5.812, y no puede
+      // haber dos formas del mismo numero en parrafos vecinos.
+      el.textContent = String(obj.val).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + sufijo
     }
   })
 })
