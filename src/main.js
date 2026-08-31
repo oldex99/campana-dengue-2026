@@ -140,17 +140,21 @@ gsap.from('.chart-wrapper', { clearProps: 'transform',
 // Animated counters (stats-row)
 document.querySelectorAll('.stat-num').forEach(el => {
   const target = parseInt(el.dataset.target)
-  const isSuffix = target > 1000 ? '+' : '%'
-  const snap = target > 1000 ? 500 : 1
+  // El sufijo sale del propio HTML: "0" no lleva nada, "0%" lleva el
+  // porcentaje. Antes se deducia del tamaño del numero y redondeaba de
+  // 500 en 500, asi que 5.812 casos se mostraban como "6 000+", que
+  // afirma mas de seis mil cuando fueron menos. En cifras de salud
+  // publica el numero va exacto.
+  const sufijo = el.textContent.trim().replace(/^0/, '')
   const obj = { val: 0 }
   gsap.to(obj, {
     val: target,
     duration: 2.2,
     ease: 'power2.out',
-    snap: { val: snap },
+    snap: { val: 1 },
     scrollTrigger: { trigger: '.stats-row', start: 'top 80%', toggleActions: 'play none none none' },
     onUpdate() {
-      el.textContent = obj.val.toLocaleString('es-CR') + isSuffix
+      el.textContent = obj.val.toLocaleString('es-CR') + sufijo
     }
   })
 })
