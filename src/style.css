@@ -376,11 +376,11 @@ a, button, label, [role="button"], input, summary {
 .icono-svg--ambar { color: var(--amber); margin-top: 0.15rem; }
 .icono-svg--rojo { width: 28px; height: 28px; }
 .icono-svg--extra {
-  width: 26px;
-  height: 26px;
-  margin: 0 auto 0.6rem;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 0.7rem;
   display: block;
-  color: var(--muted);
+  color: var(--red);
 }
 
 .section-subtitle {
@@ -646,11 +646,14 @@ a, button, label, [role="button"], input, summary {
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
+/* Sin uso desde que se quitó el bloque "CCSS" del pie: encuadrado y en
+   rojo se leía como logotipo institucional, y este es material informativo
+   de un servicio, no un sitio oficial de la Caja. Se conserva la regla por
+   si vuelve a hacer falta un distintivo, pero ya sin el marco. */
 .footer__logo-text {
   font-size: 1.375rem;
   font-weight: 800;
   color: var(--red);
-  border: 2px solid var(--red);
   padding: 0.2rem 0.65rem;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(230,57,70,0.2);
@@ -663,6 +666,13 @@ a, button, label, [role="button"], input, summary {
   font-weight: 700;
 }
 .footer__copy { color: var(--muted); font-size: 0.875rem; margin-bottom: 0.3rem; }
+.footer__aviso {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  max-width: 560px;
+  margin: 0 auto 0.75rem;
+}
 .footer__fuentes { color: var(--muted); opacity: 0.7; font-size: 0.75rem; }
 
 /* ===== QUÉ ES EL DENGUE ===== */
@@ -934,7 +944,16 @@ a, button, label, [role="button"], input, summary {
   padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
-.extra-acciones h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; text-align: center; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+/* Estos consejos venían con estilo de nota al pie: gris apagado, versalitas
+   y letra de 0.75rem. Se leían como un descargo legal y no como lo que son,
+   que es la parte accionable de la sección. Van con el peso del contenido. */
+.extra-acciones h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  color: var(--text);
+}
 .extra-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -942,13 +961,13 @@ a, button, label, [role="button"], input, summary {
 }
 .extra-item {
   text-align: center;
-  padding: 1.25rem 0.75rem;
+  padding: 1.5rem 1rem;
   background: var(--surface-2);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: var(--sombra);
 }
-.extra-item p { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+.extra-item p { font-size: 0.9rem; color: var(--text); line-height: 1.45; }
 
 /* ===== SISTEMA CONCLUSIÓN ===== */
 .sistema-conclusion {
